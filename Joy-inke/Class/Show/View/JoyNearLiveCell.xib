@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="JoyNearLiveCell">
+            <rect key="frame" x="0.0" y="0.0" width="227" height="259"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="227" height="259"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="URy-J0-hr2">
+                        <rect key="frame" x="0.0" y="0.0" width="227" height="227"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="URy-J0-hr2" secondAttribute="height" id="eYE-yW-irp"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfM-Xh-nGX">
+                        <rect key="frame" x="5" y="232" width="217" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="CMQ-Ru-a39"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="lfM-Xh-nGX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="1Dk-qg-vkV"/>
+                <constraint firstItem="URy-J0-hr2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6Jt-Ww-jXL"/>
+                <constraint firstItem="URy-J0-hr2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EIC-hu-0d2"/>
+                <constraint firstItem="lfM-Xh-nGX" firstAttribute="top" secondItem="URy-J0-hr2" secondAttribute="bottom" constant="5" id="KGy-HH-H53"/>
+                <constraint firstAttribute="trailing" secondItem="lfM-Xh-nGX" secondAttribute="trailing" constant="5" id="XyP-Jk-744"/>
+                <constraint firstAttribute="trailing" secondItem="URy-J0-hr2" secondAttribute="trailing" id="uz1-6o-O8x"/>
+            </constraints>
+            <size key="customSize" width="227" height="259"/>
+            <connections>
+                <outlet property="distanceLabel" destination="lfM-Xh-nGX" id="hCr-cO-rAx"/>
+                <outlet property="headView" destination="URy-J0-hr2" id="t3w-0T-4Oo"/>
+            </connections>
+            <point key="canvasLocation" x="258.5" y="252.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

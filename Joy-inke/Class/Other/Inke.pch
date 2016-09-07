@@ -1,0 +1,25 @@
+//
+//  Inke.pch
+//  Joy-inke
+//
+//  Created by Itanotomomi on 16/9/1.
+//  Copyright © 2016年 Itanotomomi. All rights reserved.
+//
+
+#ifndef Inke_pch
+#define Inke_pch
+
+#import "JoyMacros.h"
+#import "APIConfigure.h"
+
+#import "masonry.h"
+#import "YYKit.h"
+#import "MJExtension.h"
+#import "UIImageView+SDWebImage.h"
+#import "SDWebImageManager.h"
+#import "UIButton+WebCache.h"
+
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#endif /* Inke_pch */
