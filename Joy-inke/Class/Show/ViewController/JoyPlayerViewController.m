@@ -32,6 +32,7 @@
     if (!_contentScrollView) {
         _contentScrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _contentScrollView.pagingEnabled = YES;
+        _contentScrollView.showsHorizontalScrollIndicator = NO;
         
         _contentScrollView.contentSize = CGSizeMake(SCREEN_WIDTH * 2, 0);
         _contentScrollView.contentOffset = CGPointMake(SCREEN_WIDTH, 0);
@@ -137,12 +138,7 @@
     CGFloat height = SCREEN_HEIGHT;
     CGFloat offsetX = self.contentScrollView.contentOffset.x;
     
-    NSLog(@"%f",height);
-    
     self.liveChatVC.view.frame = CGRectMake(offsetX, 0, width, height);
-    
-    NSLog(@"%f",self.liveChatVC.view.frame.size.height);
-    NSLog(@"%f",self.liveChatVC.view.frame.origin.y);
     
     [self.liveChatVC didMoveToParentViewController:self];
     

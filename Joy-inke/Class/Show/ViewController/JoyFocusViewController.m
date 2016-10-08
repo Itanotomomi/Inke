@@ -7,31 +7,71 @@
 //
 
 #import "JoyFocusViewController.h"
+#import "JoyPlayerViewController.h"
+#import "JoyHotLiveCell.h"
+#import "JoyCreator.h"
 
 @interface JoyFocusViewController ()
+
+@property (nonatomic, strong) NSMutableArray * dataList;
 
 @end
 
 @implementation JoyFocusViewController
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.dataList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    JoyHotLiveCell * cell = [[[NSBundle mainBundle] loadNibNamed:@"JoyHotLiveCell" owner:self options:nil] lastObject];
+    
+    cell.live = self.dataList[indexPath.row];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 70 + self.view.bounds.size.width + 10;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    JoyPlayerViewController * playerVC = [[JoyPlayerViewController alloc] init];
+    playerVC.live = self.dataList[indexPath.row];
+    [self.navigationController pushViewController:playerVC animated:YES];
+    
+}
+
+- (NSMutableArray *)dataList {
+    
+    if (!_dataList) {
+        _dataList = [NSMutableArray array];
+    }
+    return _dataList;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    JoyLive * live = [[JoyLive alloc] init];
+    JoyCreator * creator = [[JoyCreator alloc] init];
+    live.creator = creator;
+    
+    live.streamAddr = Live_Joy;
+    live.city = @"杭州";
+    live.onlineUsers = 19386;
+    live.creator.nick = @"Joy";
+    [self.dataList addObject:live];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

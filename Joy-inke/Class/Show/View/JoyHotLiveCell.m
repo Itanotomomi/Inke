@@ -27,8 +27,15 @@
     self.locationLabel.text = live.city;
     self.onlineUsersLabel.text = [@(live.onlineUsers) stringValue];
     
-    [self.portraitImage downloadImage:[NSString stringWithFormat:@"%@%@", IMAGE_HOST, live.creator.portrait] placeholder:@"default_room"];
-    [self.bigPortraitImage downloadImage:[NSString stringWithFormat:@"%@%@", IMAGE_HOST, live.creator.portrait] placeholder:@"default_room"];
+    if ([live.creator.nick isEqualToString:@"Joy"]) {
+        
+        self.portraitImage.image = [UIImage  imageNamed:@"Joy.JPG"];
+        self.bigPortraitImage.image = [UIImage  imageNamed:@"Joy.JPG"];
+    } else {
+        
+        [self.portraitImage downloadImage:[NSString stringWithFormat:@"%@%@", IMAGE_HOST, live.creator.portrait] placeholder:@"default_room"];
+        [self.bigPortraitImage downloadImage:[NSString stringWithFormat:@"%@%@", IMAGE_HOST, live.creator.portrait] placeholder:@"default_room"];
+    }
 }
 
 - (void)awakeFromNib {

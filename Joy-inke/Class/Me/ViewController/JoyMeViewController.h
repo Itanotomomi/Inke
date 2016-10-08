@@ -8,6 +8,6 @@
 
 #import "JoyBaseViewController.h"
 
-@interface JoyMeViewController : JoyBaseViewController
+@interface JoyMeViewController : UITableViewController
 
 @end

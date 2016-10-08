@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 #import "JoyBaseTabBarController.h"
 #import "JoyAdvertiseView.h"
+#import "JoyLocationManager.h"
+#import "AppDelegate+UMeung.h"
+#import "JoyUserHelper.h"
+#import "JoyLoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,17 +24,41 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    JoyBaseTabBarController *tabBarController = [[JoyBaseTabBarController alloc] init];
+    /**设置友盟*/
+    [self setupUmeng];
     
-    self.window.rootViewController = tabBarController;
+    UIViewController * mainVC ;
     
-    [self.window makeKeyAndVisible];
+    if ([JoyUserHelper isAutoLogin]) {
+        
+        mainVC = [[JoyBaseTabBarController alloc] init];
+        
+    } else {
+        mainVC = [[JoyLoginViewController alloc] init];
+        
+    }
+    
+    self.window.rootViewController = mainVC;
     
     JoyAdvertiseView *advertiseView = [JoyAdvertiseView loadAdvertiseView];
     
     [self.window addSubview:advertiseView];
     
+    [[JoyLocationManager sharedManager] getGPS:^(NSString *lat, NSString *lon) {
+        
+        NSLog(@"%@, %@", lat, lon);
+    }];
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == FALSE) {
+        /**调用其他SDK，例如支付宝SDK等*/
+    }
+    return result;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

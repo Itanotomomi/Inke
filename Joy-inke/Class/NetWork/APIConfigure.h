@@ -27,4 +27,7 @@
 /**附近的人*/
 #define API_NearLocation @"api/live/near_recommend"
 
+/**Joy直播地址*/
+#define Live_Joy @"rtmp://live.hkstv.hk.lxdns.com:1935/live/joy"
+
 #endif /* APIConfigure_h */

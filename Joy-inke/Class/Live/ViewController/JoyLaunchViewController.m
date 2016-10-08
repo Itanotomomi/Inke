@@ -7,6 +7,7 @@
 //
 
 #import "JoyLaunchViewController.h"
+#import "LFLivePreview.h"
 
 @interface JoyLaunchViewController ()
 
@@ -17,6 +18,17 @@
 - (IBAction)dismissVC:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)startLive:(id)sender {
+    
+    UIView * back = [[UIView alloc] initWithFrame:self.view.bounds];
+    back.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:back];
+    
+    LFLivePreview * liveView = [[LFLivePreview alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:liveView];
+    [liveView startLive];
 }
 
 - (void)viewDidLoad {

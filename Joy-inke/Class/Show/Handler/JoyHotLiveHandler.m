@@ -10,6 +10,7 @@
 #import "HttpTool.h"
 #import "JoyLive.h"
 #import "JoyAdvertise.h"
+#import "JoyLocationManager.h"
 
 @implementation JoyHotLiveHandler
 
@@ -54,9 +55,13 @@
 + (void)executeNearLiveTaskWithSuccess:(SuccessBlock)success
                                 failed:(FailedBlock)failed {
     
+    JoyLocationManager *manager = [JoyLocationManager sharedManager];
+    NSLog(@"test -%@",manager.lat);
+    NSLog(@"test -%@",manager.lon);
+    
     NSDictionary * params = @{@"uid":@"85149891",
-                              @"latitude":@"40.090562",
-                              @"longitude":@"116.413353"
+                              @"latitude":manager.lat,
+                              @"longitude":manager.lon
                               };
     
     [HttpTool getWithPath:API_NearLocation params:params success:^(id json) {
